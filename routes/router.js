@@ -26,7 +26,7 @@ router.get("/api/workouts", function(req, res) {
     Workout.find({})
     .then(workoutDataBase => {
         workoutDataBase.forEach(totalWorkoutTime => {
-          var totalTime =0 ;
+          let totalTime =0 ;
           totalWorkoutTime.exercises.forEach(exercises => {
            totalTime += exercises.duration;
           })
