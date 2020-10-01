@@ -24,9 +24,16 @@ router.get("/api/workouts/range", function(req, res) {
 
 router.get("/api/workouts", function(req, res) {
     Workout.find({})
-    .then(data => {
-        res.json(data);
-    })
+    .then(workoutDataBase => {
+        workoutDataBase.forEach(totalWorkoutTime => {
+          var totalTime =0 ;
+          totalWorkoutTime.exercises.forEach(exercises => {
+           totalTime += exercises.duration;
+          })
+          totalWorkoutTime.totalDuration = totalTime;
+        })
+        res.json(workoutDataBase);
+      })
     .catch(err => {
         res.json(err);
     });
