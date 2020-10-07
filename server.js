@@ -18,6 +18,8 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
   useUnifiedTopology: true,
   useCreateIndex: true,
   useFindAndModify: false
+}).catch(err => {
+  console.log(err);
 });
 
 // routes
